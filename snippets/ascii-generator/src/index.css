@@ -1,0 +1,28 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#debug-image canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--width) * 5.41px);
+  height: calc(var(--height) * 10px);
+  z-index: -1;
+}
+
+#debug-chars {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-row-gap: 1px;
+  width: 63px;
+}
+
+@media screen and (max-width: 600px) {
+  .dg {
+    display: none;
+  }
+}
