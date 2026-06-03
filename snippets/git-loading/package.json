@@ -1,0 +1,74 @@
+{
+  "name": "ui-snippets-template",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Tamino Martinius",
+    "email": "dev@zaku.eu",
+    "url": "https://taminomartinius.de"
+  },
+  "engines": {
+    "node": ">=8.10"
+  },
+  "description": "Simple CodePen like Template which supports postCSS and TypeScript to build UI Snippets",
+  "keywords": [
+    "ui",
+    "snippets",
+    "snippet",
+    "template",
+    "boilerplate",
+    "hot",
+    "reload",
+    "hmr",
+    "live",
+    "typescript",
+    "tslint",
+    "cssModules",
+    "postCSS",
+    "webpack",
+    "stylint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/taminomartinius/ui-snippets-template.git"
+  },
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "webpack-dev-server --mode development --open --config ./webpack/webpack.config.babel.js --env.env=dev",
+    "prebuild": "rm -rf ./build",
+    "build": "webpack --mode production --config ./webpack/webpack.config.babel.js --env.env=prod",
+    "debug:prod": "npm run debug -- --env.env=prod --display-error-details",
+    "debug": "node --inspect-brk ./node_modules/webpack/bin/webpack.js --config ./webpack/webpack.config.babel.js",
+    "deploy": "npm run build && gh-pages -d build"
+  },
+  "devDependencies": {
+    "@types/node": "10.0.9",
+    "@types/webpack-env": "1.13.6",
+    "autoprefixer": "8.5.0",
+    "compression-webpack-plugin": "1.1.11",
+    "copy-webpack-plugin": "4.5.1",
+    "css-loader": "0.28.11",
+    "extract-text-webpack-plugin": "4.0.0-beta.0",
+    "fork-ts-checker-webpack-plugin": "0.4.1",
+    "gh-pages": "^1.1.0",
+    "html-webpack-plugin": "3.2.0",
+    "identity-obj-proxy": "3.0.0",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-each": "^0.10.0",
+    "postcss-loader": "2.1.5",
+    "postcss-nested": "^3.0.0",
+    "raw-loader": "^0.5.1",
+    "source-map-loader": "0.2.3",
+    "style-loader": "0.21.0",
+    "stylelint": "9.2.0",
+    "ts-loader": "4.3.0",
+    "tslint": "5.10.0",
+    "typescript": "2.8.3",
+    "typings-for-css-modules-loader": "1.7.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "4.8.3",
+    "webpack-cli": "2.1.3",
+    "webpack-dev-server": "3.1.4",
+    "webpack-merge": "4.1.2"
+  }
+}
