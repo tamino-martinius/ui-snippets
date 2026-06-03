@@ -17,8 +17,8 @@ toolchain builds them all plus a gallery.
 | <img src="snippets/checkboxes/preview.gif" width="160"> | **[Checkboxes](https://tamino-martinius.github.io/ui-snippets/snippets/checkboxes/)** | Animated, pure-CSS custom checkbox styles. | 13 |
 | <img src="snippets/ascii-generator/preview.gif" width="160"> | **[ASCII Art Generator](https://tamino-martinius.github.io/ui-snippets/snippets/ascii-generator/)** | Turn any image into ASCII art in the browser, with live controls. | 3 |
 | <img src="snippets/radiobuttons/preview.gif" width="160"> | **[Radio Buttons](https://tamino-martinius.github.io/ui-snippets/snippets/radiobuttons/)** | Animated, pure-CSS custom radio-button styles. | 3 |
-| — | **[Starfield](https://tamino-martinius.github.io/ui-snippets/snippets/starfield/)** | An animated, configurable parallax starfield on a canvas. | 0 |
-| — | **[Git Loading](https://tamino-martinius.github.io/ui-snippets/snippets/git-loading/)** | A loading animation styled after a git commit-graph. | 0 |
+| <img src="snippets/starfield/preview.gif" width="160"> | **[Starfield](https://tamino-martinius.github.io/ui-snippets/snippets/starfield/)** | An animated, configurable parallax starfield on a canvas. | 0 |
+| <img src="snippets/git-loading/preview.gif" width="160"> | **[Git Loading](https://tamino-martinius.github.io/ui-snippets/snippets/git-loading/)** | A loading animation styled after a git commit-graph. | 0 |
 
 ## Develop
 
