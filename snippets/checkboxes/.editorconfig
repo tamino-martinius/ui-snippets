@@ -1,0 +1,40 @@
+# What is Editorconfig?
+# https://www.topbug.net/blog/2012/03/14/use-editorconfig-to-maintain-consistent-coding-styles-between-different-editors-and-ides/
+# Sample files:
+#  https://github.com/airbnb/javascript/blob/master/.editorconfig
+#  https://github.com/rcorp/standard-project-structure/blob/master/generators/linter/templates/.editorconfig
+#  https://github.com/palantir/blueprint/blob/master/.editorconfig
+root = true
+
+[*]
+# Unix-style newlines with a newline ending every file
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+# 2 spaces for indentation
+indent_size = 2
+indent_style = space
+
+# some files use 4 spaces for indentation
+[*.{js,jsx,ts,tsx,xml}]
+indent_size = 2
+
+[tsconfig.json]
+indent_size = 2
+
+# Ignore paths
+[/node_modules/**]
+charset = none
+end_of_line = none
+insert_final_newline = none
+trim_trailing_whitespace = none
+indent_style = none
+indent_size = none
+
+[*.d.ts]
+charset = none
+end_of_line = none
+insert_final_newline = none
+trim_trailing_whitespace = none
+indent_style = none
+indent_size = none
