@@ -11,3 +11,4 @@ dist
 
 # Misc
 *.local
+.gstack/
