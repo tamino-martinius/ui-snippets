@@ -1,0 +1,151 @@
+:root {
+  --bg: #0d0f12;
+  --surface: #16191e;
+  --surface-2: #1d2127;
+  --border: #2a2f37;
+  --text: #e7eaee;
+  --muted: #9aa3af;
+  --accent: #6ea8fe;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font:
+    16px/1.5 -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 4vw, 2rem) 4rem;
+}
+
+.masthead h1 {
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  letter-spacing: -0.02em;
+  margin: 0 0 0.4rem;
+}
+
+.masthead__sub {
+  color: var(--muted);
+  font-size: 1.1rem;
+  margin: 0 0 1rem;
+  max-width: 46ch;
+}
+
+.masthead__repo {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.masthead__repo:hover {
+  text-decoration: underline;
+}
+
+.grid {
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+.card__media {
+  aspect-ratio: 16 / 10;
+  background: #000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__media--empty {
+  background: linear-gradient(135deg, var(--surface-2), #11141a);
+  color: var(--muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.card__body {
+  padding: 1rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.card__title {
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.card__desc {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0;
+  flex: 1;
+}
+
+.card__stars {
+  margin-top: 0.5rem;
+  align-self: flex-start;
+  font-size: 0.8rem;
+  color: #f5c518;
+  background: rgba(245, 197, 24, 0.1);
+  border: 1px solid rgba(245, 197, 24, 0.25);
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+}
+
+.foot {
+  margin-top: 3rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}

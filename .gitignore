@@ -5,11 +5,9 @@
 node_modules
 npm-debug.log*
 
-# Build
-build/*
+# Vite build output
+dist
+.vite
 
-# Cache
-.cache-loader
-
-# Stats
-dist/stats/*
+# Misc
+*.local
