@@ -22,6 +22,9 @@
     "preview": "vite preview",
     "deploy": "npm run build && gh-pages -d dist"
   },
+  "dependencies": {
+    "dat.gui": "^0.7.9"
+  },
   "devDependencies": {
     "gh-pages": "^6.2.0",
     "postcss-preset-env": "^10.1.3",

@@ -1,7 +1,0 @@
-{
-  "typescript.tsdk": "./node_modules/typescript/lib",
-  "vsicons.presets.angular": false,
-  "tslint.enable": true,
-  "css.validate": false,
-  "stylelint.enable": true
-}
