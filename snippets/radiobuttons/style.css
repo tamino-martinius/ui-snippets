@@ -43,20 +43,52 @@
 }
 
 /* themes */
-@each $theme in light, dark {
-  .theme-$(theme) {
-    --input-color: var(--theme-$(theme)--color-default);
-    --input-color--line: var(--theme-$(theme)--color-line-default);
-    --input-color--default: var(--theme-$(theme)--color-default);
-    --input-color--bg: var(--theme-$(theme)--color-bg);
-    --input-color--font: var(--theme-$(theme)--color-font);
-    --input-color--border: var(--theme-$(theme)--color-border);
-    @each $color-type in primary, secondary, success, danger {
-      .input--$(color-type) {
-        --input-color: var(--theme-$(theme)--color-$(color-type));
-        --input-color--line: var(--theme-$(theme)--color-line-$(color-type));
-      }
-    }
+.theme-light {
+  --input-color: var(--theme-light--color-default);
+  --input-color--line: var(--theme-light--color-line-default);
+  --input-color--default: var(--theme-light--color-default);
+  --input-color--bg: var(--theme-light--color-bg);
+  --input-color--font: var(--theme-light--color-font);
+  --input-color--border: var(--theme-light--color-border);
+  .input--primary {
+    --input-color: var(--theme-light--color-primary);
+    --input-color--line: var(--theme-light--color-line-primary);
+  }
+  .input--secondary {
+    --input-color: var(--theme-light--color-secondary);
+    --input-color--line: var(--theme-light--color-line-secondary);
+  }
+  .input--success {
+    --input-color: var(--theme-light--color-success);
+    --input-color--line: var(--theme-light--color-line-success);
+  }
+  .input--danger {
+    --input-color: var(--theme-light--color-danger);
+    --input-color--line: var(--theme-light--color-line-danger);
+  }
+}
+.theme-dark {
+  --input-color: var(--theme-dark--color-default);
+  --input-color--line: var(--theme-dark--color-line-default);
+  --input-color--default: var(--theme-dark--color-default);
+  --input-color--bg: var(--theme-dark--color-bg);
+  --input-color--font: var(--theme-dark--color-font);
+  --input-color--border: var(--theme-dark--color-border);
+  .input--primary {
+    --input-color: var(--theme-dark--color-primary);
+    --input-color--line: var(--theme-dark--color-line-primary);
+  }
+  .input--secondary {
+    --input-color: var(--theme-dark--color-secondary);
+    --input-color--line: var(--theme-dark--color-line-secondary);
+  }
+  .input--success {
+    --input-color: var(--theme-dark--color-success);
+    --input-color--line: var(--theme-dark--color-line-success);
+  }
+  .input--danger {
+    --input-color: var(--theme-dark--color-danger);
+    --input-color--line: var(--theme-dark--color-line-danger);
   }
 }
 
@@ -67,10 +99,14 @@
   text-rendering: optimizeLegibility;
   color: var(--input-color--font);
   --input-size: var(--input-size--default);
-  @each $input-size in large, small, xsmall {
-    &.input--$(input-size) {
-      --input-size: var(--input-size--$(input-size));
-    }
+  &.input--large {
+    --input-size: var(--input-size--large);
+  }
+  &.input--small {
+    --input-size: var(--input-size--small);
+  }
+  &.input--xsmall {
+    --input-size: var(--input-size--xsmall);
   }
   label {
     text-align: left;
