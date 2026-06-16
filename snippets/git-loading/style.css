@@ -17,14 +17,14 @@ html {
 
 .loading svg {
   filter: drop-shadow(2px 2px 3px #0004);
-  transform: scale(.95);
+  transform: scale(0.95);
   animation: loadingSvg 4s 2s ease infinite;
 }
 
 .loading__rect {
   fill: var(--color-git);
   transform: scale(0) rotate(45deg);
-  animation: loadingRect .5s 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: loadingRect 0.5s 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   transform-origin: 50% 50%;
 }
 
@@ -42,7 +42,7 @@ html {
 .loading__dot {
   fill: #ffffff;
   transform: scale(0);
-  animation: loadingDot .8s cubic-bezier(0.175, 0.885, 0.32, 1.8) forwards;
+  animation: loadingDot 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.8) forwards;
 }
 
 .loading__dot--1 {
@@ -88,7 +88,7 @@ html {
 
 .loading__title {
   opacity: 0;
-  transform: scale(.95) translateY(-50%);
+  transform: scale(0.95) translateY(-50%);
   animation: loadingTitle 4s 2s ease infinite;
 }
 
@@ -148,7 +148,7 @@ html {
 @keyframes loadingTitle {
   0%,
   100% {
-    transform: scale(.95) translateY(-50%);
+    transform: scale(0.95) translateY(-50%);
     opacity: 0;
   }
   50% {
@@ -160,7 +160,7 @@ html {
 @keyframes loadingSvg {
   0%,
   100% {
-    transform: scale(.95);
+    transform: scale(0.95);
   }
   50% {
     transform: scale(1.05);

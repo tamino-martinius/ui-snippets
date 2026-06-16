@@ -14,13 +14,7 @@ class Starfield {
   settings = {
     count: 1000,
     demo: true,
-    colors: [
-      '#B24A35',
-      '#9CB235',
-      '#36B24A',
-      '#369DB2',
-      '#4A35B2',
-    ],
+    colors: ['#B24A35', '#9CB235', '#36B24A', '#369DB2', '#4A35B2'],
     size: {
       min: 0.1,
       range: 3,
@@ -155,8 +149,14 @@ class Starfield {
       this.cursorPosition = position / 10;
       this.fW2 = this.width * 0.5;
       this.fH2 = this.height * 0.5;
-      this.settings.cursor.x = ~~(this.fW2 + this.fW2 * Math.sin(this.cursorPosition) * Math.tan(Math.sin(this.cursorPosition * 1.5)));
-      this.settings.cursor.y = ~~(this.fH2 + this.fH2 * Math.sin(this.cursorPosition * 2) * Math.tan(Math.cos(this.cursorPosition)));
+      this.settings.cursor.x = ~~(
+        this.fW2 +
+        this.fW2 * Math.sin(this.cursorPosition) * Math.tan(Math.sin(this.cursorPosition * 1.5))
+      );
+      this.settings.cursor.y = ~~(
+        this.fH2 +
+        this.fH2 * Math.sin(this.cursorPosition * 2) * Math.tan(Math.cos(this.cursorPosition))
+      );
     }
 
     for (let i = 0; i < this.currentCount; i += 1) {
@@ -177,17 +177,28 @@ class Starfield {
           if (this.settings.cursor.clickDuration < elapsed) {
             this.clickStart = undefined;
           } else {
-            cursorRadius += (elapsed / this.settings.cursor.clickDuration) * this.settings.cursor.clickSize;
+            cursorRadius +=
+              (elapsed / this.settings.cursor.clickDuration) * this.settings.cursor.clickSize;
           }
         }
-        const distance = Math.sqrt(Math.pow(x - this.settings.cursor.x, 2) + Math.pow(y - this.settings.cursor.y, 2));
+        const distance = Math.sqrt(
+          (x - this.settings.cursor.x) ** 2 + (y - this.settings.cursor.y) ** 2,
+        );
         if (cursorRadius < distance && distance < cursorRadius + this.settings.cursor.size.range) {
-          impact = this.settings.cursor.impact * Math.sin((distance - cursorRadius) * Math.PI / this.settings.cursor.size.range);
+          impact =
+            this.settings.cursor.impact *
+            Math.sin(((distance - cursorRadius) * Math.PI) / this.settings.cursor.size.range);
         }
       }
       this.ctx.moveTo(x, y);
-      this.ctx.arc(x, y, star.size * this.settings.size.range + this.settings.size.min + impact, 0, 360);
-    };
+      this.ctx.arc(
+        x,
+        y,
+        star.size * this.settings.size.range + this.settings.size.min + impact,
+        0,
+        360,
+      );
+    }
     this.ctx.fill();
   }
 }

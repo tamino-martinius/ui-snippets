@@ -20,7 +20,7 @@ input {
   position: absolute;
 }
 
-.grid>* {
+.grid > * {
   position: relative;
 }
 
@@ -34,7 +34,7 @@ label {
   max-height: 150px;
 }
 
-@media (min-aspect-ratio: 1/1) {
+@media (min-aspect-ratio: 1 / 1) {
   label {
     width: 50vh;
     height: 50vh;
@@ -69,7 +69,7 @@ path {
   stroke-linejoin: round;
   stroke-dasharray: var(--length) var(--total-length);
   stroke-dashoffset: var(--offset);
-  transition: all .8s cubic-bezier(.645, .045, .355, 1);
+  transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .menu {
@@ -91,7 +91,7 @@ label:hover circle {
   opacity: 1;
 }
 
-.cross input:checked+svg {
+.cross input:checked + svg {
   .line--1,
   .line--3 {
     --length: 22.627416998;
@@ -101,7 +101,7 @@ label:hover circle {
   }
 }
 
-.back input:checked+svg {
+.back input:checked + svg {
   .line--1,
   .line--3 {
     --length: 8.602325267;
@@ -117,7 +117,7 @@ label:hover circle {
   .line--2 {
     --total-length: 70;
   }
-  input:checked+svg {
+  input:checked + svg {
     .line--1,
     .line--3 {
       --offset: -94.1149185097;
@@ -149,7 +149,7 @@ label:hover circle {
   .line--2 {
     --total-length: 99;
   }
-  input:checked+svg {
+  input:checked + svg {
     path {
       transform: translateX(30px);
     }
@@ -172,7 +172,7 @@ label:hover circle {
   .line--2 {
     --total-length: 80;
   }
-  input:checked+svg {
+  input:checked + svg {
     .line--1,
     .line--3 {
       --offset: -109.1770175568;
@@ -205,7 +205,7 @@ label:hover circle {
   .line--2 {
     --total-length: 99;
   }
-  input:checked+svg {
+  input:checked + svg {
     path {
       transform: translateX(31px);
     }
@@ -226,18 +226,20 @@ label:hover circle {
 
 .line--debug {
   display: none;
-  opacity: .2;
+  opacity: 0.2;
   stroke-dasharray: none;
 }
 
 @media screen and (min-width: 800px) {
   .debug,
   #menu-or-dots {
-    opacity: .8;
+    opacity: 0.8;
     display: block;
     position: absolute;
     z-index: 1;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    font-family:
+      -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+      'Helvetica Neue', sans-serif;
     background: #000000;
     color: #ffffff;
     width: 150px;
@@ -270,7 +272,7 @@ label:hover circle {
       content: '☰';
     }
   }
-  .debug.active+.grid path.line--debug {
+  .debug.active + .grid path.line--debug {
     display: inherit;
   }
 }

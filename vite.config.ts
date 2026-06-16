@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite';
-import { readdirSync, existsSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { defineConfig } from 'vite';
 
 // Each snippet is a self-contained multi-page entry: snippets/<slug>/index.html
 const root = import.meta.dirname;
