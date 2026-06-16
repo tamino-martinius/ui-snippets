@@ -1,7 +1,8 @@
 import { GUI } from 'dat.gui';
 import avatarUrl from './avatar.png';
-import sloganUrl from './slogan.png';
 import codepenUrl from './codepen.png';
+import sloganUrl from './slogan.png';
+
 interface Dict<T> {
   [key: string]: T;
 }
@@ -18,7 +19,8 @@ enum ColorPalette {
 
 class AsciiArtGenerator {
   settings = {
-    charSet: ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~',
+    charSet:
+      ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~',
     url: avatarUrl,
     charSamples: 1,
     size: 50,
@@ -37,7 +39,7 @@ class AsciiArtGenerator {
     },
   };
   demoDirection = -1;
-  demoSettings: { url: string, size: number, charSamples: number }[] = [
+  demoSettings: { url: string; size: number; charSamples: number }[] = [
     {
       url: avatarUrl,
       size: 50,
@@ -88,8 +90,8 @@ class AsciiArtGenerator {
     const stopDemo = () => {
       this.settings.isDemoRunning = false;
       window.removeEventListener('mousedown', stopDemo);
-    }
-    window.addEventListener('mousedown', stopDemo)
+    };
+    window.addEventListener('mousedown', stopDemo);
   }
 
   initGui() {
@@ -98,20 +100,32 @@ class AsciiArtGenerator {
       this.analyzeCharRegions();
       this.generate();
     });
-    gui.add(this.settings, 'url').listen().onChange(() => this.loadFromUrl());
-    gui.add(this.settings, 'charSamples', 1, 3, 1).listen().onChange(() => {
-      this.analyzeCharRegions();
-      this.loadFromUrl();
-    });
-    gui.add(this.settings, 'size', 10, 150, 1).listen().onChange(() => this.loadFromUrl());
+    gui
+      .add(this.settings, 'url')
+      .listen()
+      .onChange(() => this.loadFromUrl());
+    gui
+      .add(this.settings, 'charSamples', 1, 3, 1)
+      .listen()
+      .onChange(() => {
+        this.analyzeCharRegions();
+        this.loadFromUrl();
+      });
+    gui
+      .add(this.settings, 'size', 10, 150, 1)
+      .listen()
+      .onChange(() => this.loadFromUrl());
     gui.add(this.settings, 'contrast', -1, 1, 0.01).onChange(() => {
       this.normalizeValueMap();
       this.generate();
     });
-    gui.add(this.settings, 'brightness', -1, 1, 0.01).listen().onChange(() => {
-      this.normalizeValueMap();
-      this.generate();
-    });
+    gui
+      .add(this.settings, 'brightness', -1, 1, 0.01)
+      .listen()
+      .onChange(() => {
+        this.normalizeValueMap();
+        this.generate();
+      });
     gui.add(this.settings, 'alpha', -1, 1, 0.01).onChange(() => this.generate());
     gui.add(this.settings, 'ColorPalette', ColorPalette).onChange(() => {
       this.generate();
@@ -120,12 +134,15 @@ class AsciiArtGenerator {
       this.analyzeCharRegions();
       this.loadFromUrl();
     });
-    gui.add(this.settings, 'isDemoRunning').listen().onChange(() => {
-      if (this.settings.isDemoRunning) {
-        this.demo();
-      }
-    });
-    gui.add(this.settings, 'saveAsHtml')
+    gui
+      .add(this.settings, 'isDemoRunning')
+      .listen()
+      .onChange(() => {
+        if (this.settings.isDemoRunning) {
+          this.demo();
+        }
+      });
+    gui.add(this.settings, 'saveAsHtml');
   }
 
   get elements() {
@@ -222,7 +239,7 @@ class AsciiArtGenerator {
       // if (min > value) min = value;
       // if (max < value) max = value;
     }
-    if (max > 0 && min != max) {
+    if (max > 0 && min !== max) {
       const diff = max - min;
       for (const char in this.charRegions) {
         const regions = this.charRegions[char];
@@ -268,13 +285,19 @@ class AsciiArtGenerator {
 
   onImageLoaded(img: HTMLImageElement) {
     this.width = this.settings.size;
-    this.height = ~~((img.height / img.width) * this.width / 1.9);
+    this.height = ~~(((img.height / img.width) * this.width) / 1.9);
     const canvas = document.createElement('canvas');
     canvas.width = this.width * this.settings.charSamples;
     canvas.height = this.height * this.settings.charSamples;
     const ctx = canvas.getContext('2d');
     if (!ctx) throw 'context creation failed';
-    ctx.drawImage(img, 0, 0, this.width * this.settings.charSamples, this.height * this.settings.charSamples);
+    ctx.drawImage(
+      img,
+      0,
+      0,
+      this.width * this.settings.charSamples,
+      this.height * this.settings.charSamples,
+    );
     this.clearElement(this.debugImageElement);
     if (this.settings.debug) {
       this.debugImageElement.appendChild(canvas);
@@ -289,22 +312,37 @@ class AsciiArtGenerator {
   generateValueMap(ctx: CanvasRenderingContext2D) {
     this.valueMap = [];
     this.colorMap = [];
-    const data = Array.from(ctx.getImageData(0, 0, this.width * this.settings.charSamples, this.height * this.settings.charSamples).data);
+    const data = Array.from(
+      ctx.getImageData(
+        0,
+        0,
+        this.width * this.settings.charSamples,
+        this.height * this.settings.charSamples,
+      ).data,
+    );
     const rowLength = this.width * this.settings.charSamples * 4;
     for (let cellY = 0; cellY < this.height; cellY += 1) {
       for (let cellX = 0; cellX < this.width; cellX += 1) {
         const cell = [];
-        const pos = (cellX * this.settings.charSamples) * 4 + (cellY * this.settings.charSamples) * rowLength;
+        const pos =
+          cellX * this.settings.charSamples * 4 + cellY * this.settings.charSamples * rowLength;
         this.colorMap.push(data.slice(pos, pos + 4));
         for (let posY = 0; posY < this.settings.charSamples; posY += 1) {
           for (let posX = 0; posX < this.settings.charSamples; posX += 1) {
-            const pos = (cellX * this.settings.charSamples + posX) * 4 + (cellY * this.settings.charSamples + posY) * rowLength;
+            const pos =
+              (cellX * this.settings.charSamples + posX) * 4 +
+              (cellY * this.settings.charSamples + posY) * rowLength;
             const alpha = data[pos + 3] / 255;
             const values = data.slice(pos, pos + 3);
-            const value = 1 - ((values[0] + values[1] + values[2]) / 765 * (alpha) + 1 - alpha);
+            const value = 1 - (((values[0] + values[1] + values[2]) / 765) * alpha + 1 - alpha);
             if (this.settings.debug) {
               ctx.fillStyle = `rgba(255, 0, 255, ${value})`;
-              ctx.fillRect(cellX * this.settings.charSamples + posX, cellY * this.settings.charSamples + posY, 1, 1);
+              ctx.fillRect(
+                cellX * this.settings.charSamples + posX,
+                cellY * this.settings.charSamples + posY,
+                1,
+                1,
+              );
             }
             cell.push(value);
           }
@@ -333,14 +371,15 @@ class AsciiArtGenerator {
       // if (min > value) min = value;
       // if (max < value) max = value;
     }
-    if (max > 0 && min != max) {
+    if (max > 0 && min !== max) {
       const diff = max - min;
       this.normalizedMap = [];
       for (const regions of this.valueMap) {
         const normals = Array.from(regions);
         for (let index = 0; index < normals.length; index += 1) {
           normals[index] = (normals[index] - min) * (1 / diff);
-          normals[index] = (this.settings.contrast + 1) * (normals[index] - 0.5) + 0.5 + this.settings.brightness;
+          normals[index] =
+            (this.settings.contrast + 1) * (normals[index] - 0.5) + 0.5 + this.settings.brightness;
         }
         this.normalizedMap.push(normals);
       }
@@ -390,7 +429,10 @@ class AsciiArtGenerator {
       let closestColor = [0, 0, 0];
       let minDiff = Number.MAX_VALUE;
       for (const paletteColor of this.colorPalettes[this.settings.ColorPalette]) {
-        const diff = Math.abs(color[0] - paletteColor[0]) + Math.abs(color[1] - paletteColor[1]) + Math.abs(color[2] - paletteColor[2]);
+        const diff =
+          Math.abs(color[0] - paletteColor[0]) +
+          Math.abs(color[1] - paletteColor[1]) +
+          Math.abs(color[2] - paletteColor[2]);
         if (diff < minDiff) {
           minDiff = diff;
           closestColor = paletteColor;
@@ -408,7 +450,9 @@ class AsciiArtGenerator {
         if (this.settings.ColorPalette !== ColorPalette.Monochrome) {
           cell.style.color = this.getCharColor(this.colorMap[cellX + cellY * this.width]);
         }
-        cell.innerHTML = this.getClosestChar(this.normalizedMap[cellX + cellY * this.width]).replace(' ', '&nbsp;');
+        cell.innerHTML = this.getClosestChar(
+          this.normalizedMap[cellX + cellY * this.width],
+        ).replace(' ', '&nbsp;');
         this.asciiElement.appendChild(cell);
       }
     }

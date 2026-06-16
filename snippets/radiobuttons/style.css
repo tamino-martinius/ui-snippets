@@ -122,9 +122,14 @@
   border-color: var(--input-color--border);
   border-width: 1px;
   border-style: solid;
-  vertical-align: calc((var(--input-size--default) - var(--input-size)) / 2 - var(--input-size--default) / 4);
-  transition: .1s background-color ease;
-  transition-delay: .05s;
+  vertical-align: calc(
+    (var(--input-size--default) - var(--input-size)) /
+    2 -
+    var(--input-size--default) /
+    4
+  );
+  transition: 0.1s background-color ease;
+  transition-delay: 0.05s;
 }
 
 @keyframes wobble {
@@ -132,13 +137,13 @@
     transform: scale(1, 1) rotate(0deg);
   }
   40% {
-    transform: scale(1.1, .9) rotate(5deg);
+    transform: scale(1.1, 0.9) rotate(5deg);
   }
   70% {
     transform: scale(0.9, 1.1) rotate(-3deg);
   }
   80% {
-    transform: scale(1.05, .95) rotate(1deg);
+    transform: scale(1.05, 0.95) rotate(1deg);
   }
   to {
     transform: scale(1, 1) rotate(0deg);
@@ -161,7 +166,8 @@
     opacity: 0.9;
     position: relative;
     overflow: hidden;
-    &:before, &:after {
+    &:before,
+    &:after {
       content: '';
       display: block;
       position: absolute;
@@ -175,10 +181,10 @@
       border-width: 1px;
       border-style: solid;
       border-radius: var(--input-size);
-      transition: .2s transform ease;
+      transition: 0.2s transform ease;
     }
     &:before {
-      transition-delay: .2s;
+      transition-delay: 0.2s;
       background-color: var(--input-color);
     }
     &:after {
@@ -195,31 +201,34 @@
   input:checked + .input__box {
     transition-delay: 0s;
     animation-name: wobble;
-    animation-duration: .3s;
+    animation-duration: 0.3s;
     animation-timing-function: ease;
     &:before {
       transition-delay: 0s;
       transform: scale(1.1);
     }
     &:after {
-      transition-delay: .2s;
-      transform: scale(.33);
+      transition-delay: 0.2s;
+      transform: scale(0.33);
     }
   }
   input:disabled + .input__box,
-  input:disabled + .input__box+span {
-    opacity: .5;
+  input:disabled + .input__box + span {
+    opacity: 0.5;
   }
 }
 
 /* general design */
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
 }
 
 article {
-  font-family: 'Gotham Rounded SSm A', 'Gotham Rounded SSm B', 'Gotham Rounded A', 'Gotham Rounded B', 'proxima-nova-soft', Verdana, Geneva, sans-serif;
+  font-family:
+    'Gotham Rounded SSm A', 'Gotham Rounded SSm B', 'Gotham Rounded A', 'Gotham Rounded B',
+    'proxima-nova-soft', Verdana, Geneva, sans-serif;
   color: var(--input-color--font);
   background: var(--input-color--bg);
   display: flex;

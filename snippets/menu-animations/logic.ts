@@ -1,4 +1,4 @@
-Array.from(document.getElementsByTagName('path')).map(path => {
+Array.from(document.getElementsByTagName('path')).forEach((path) => {
   console.log(path.getTotalLength());
   const debugPath: HTMLElement = <any>path.cloneNode();
   debugPath.classList.add('line--debug');
@@ -19,12 +19,12 @@ toggleCheckbox.addEventListener('click', () => {
   console.log('x');
 
   if (toggleCheckbox.classList.contains('menu')) {
-    Array.from(document.getElementsByClassName('menu')).map(elem => {
+    Array.from(document.getElementsByClassName('menu')).forEach((elem) => {
       elem.classList.remove('menu');
       elem.classList.add('dots');
     });
   } else {
-    Array.from(document.getElementsByClassName('dots')).map(elem => {
+    Array.from(document.getElementsByClassName('dots')).forEach((elem) => {
       elem.classList.remove('dots');
       elem.classList.add('menu');
     });
@@ -42,3 +42,6 @@ if (grid) {
     clearInterval(autoShow);
   });
 }
+
+// Mark this side-effect file as a module so its top-level bindings stay scoped.
+export {};

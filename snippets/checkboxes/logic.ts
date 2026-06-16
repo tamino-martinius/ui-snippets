@@ -8,7 +8,8 @@ for (let checkboxIndex = $checkboxes.length - 1; checkboxIndex >= 0; checkboxInd
   const $checkbox = $checkboxes[checkboxIndex];
   // ...
 }
-setTimeout(() => { /* TODO: prevent this timeout */
+setTimeout(() => {
+  /* TODO: prevent this timeout */
   const $preloadElements = document.getElementsByClassName('preload');
   for (let preloadIndex = $preloadElements.length - 1; preloadIndex >= 0; preloadIndex--) {
     const $preload = $preloadElements[preloadIndex];
@@ -16,3 +17,5 @@ setTimeout(() => { /* TODO: prevent this timeout */
   }
 }, 500);
 
+// Mark this side-effect file as a module so its top-level bindings stay scoped.
+export {};

@@ -1,0 +1,55 @@
+name: CI
+
+# Verify code integrity on every change: lint, type-check, and build.
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+# Only keep the latest run per branch/PR; cancel superseded ones.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint (Biome)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # `biome ci` is the read-only, CI-optimized variant: errors fail the job,
+      # warnings are reported but non-blocking.
+      - run: npx @biomejs/biome ci .
+
+  typecheck:
+    name: Type-check (tsc)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+
+  build:
+    name: Build (Vite)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build

@@ -122,9 +122,14 @@
   border-color: var(--input-color--border);
   border-width: 1px;
   border-style: solid;
-  vertical-align: calc((var(--input-size--default) - var(--input-size)) / 2 - var(--input-size--default) / 4);
-  transition: .1s background-color ease;
-  transition-delay: .05s;
+  vertical-align: calc(
+    (var(--input-size--default) - var(--input-size)) /
+    2 -
+    var(--input-size--default) /
+    4
+  );
+  transition: 0.1s background-color ease;
+  transition-delay: 0.05s;
 }
 
 @keyframes wobble {
@@ -132,13 +137,13 @@
     transform: scale(1, 1) rotate(0deg);
   }
   40% {
-    transform: scale(1.1, .9) rotate(5deg);
+    transform: scale(1.1, 0.9) rotate(5deg);
   }
   70% {
     transform: scale(0.9, 1.1) rotate(-3deg);
   }
   80% {
-    transform: scale(1.05, .95) rotate(1deg);
+    transform: scale(1.05, 0.95) rotate(1deg);
   }
   to {
     transform: scale(1, 1) rotate(0deg);
@@ -157,23 +162,24 @@
     display: none;
   }
   .input__box {
-    border-radius: calc(var(--input-size) * .266);
+    border-radius: calc(var(--input-size) * 0.266);
     opacity: 0.9;
     &:before {
-      transition: .05s width linear;
-      transition-delay: .1s;
+      transition: 0.05s width linear;
+      transition-delay: 0.1s;
       --rotation: 45deg;
       --translate-top: 4px;
       --translate-left: 3px;
     }
     &:after {
-      transition: .1s width linear;
+      transition: 0.1s width linear;
       transition-delay: 0s;
       --rotation: -45deg;
       --translate-top: -2px;
       --translate-left: 8px;
     }
-    &:before, &:after {
+    &:before,
+    &:after {
       content: '';
       position: absolute;
       transform-origin: 0% 100%;
@@ -181,7 +187,8 @@
       border-bottom-color: var(--input-color--line);
       border-bottom-width: 1px;
       border-bottom-style: solid;
-      transform: rotate(var(--rotation)) translateX(var(--translate-top)) translateY(var(--translate-left));
+      transform: rotate(var(--rotation)) translateX(var(--translate-top))
+        translateY(var(--translate-left));
     }
   }
   label {
@@ -230,7 +237,7 @@
     background-color: var(--input-color);
     transition-delay: 0s;
     animation-name: wobble;
-    animation-duration: .3s;
+    animation-duration: 0.3s;
     animation-timing-function: ease;
     &:before {
       width: calc(var(--input-size) / 2 - 2px);
@@ -238,12 +245,12 @@
     }
     &:after {
       width: calc(var(--input-size) / 2 + 2px);
-      transition-delay: .05s;
+      transition-delay: 0.05s;
     }
   }
   input:disabled + .input__box,
   input:disabled + .input__box + span {
-    opacity: .5;
+    opacity: 0.5;
   }
 
   /* TODO: use generic calculated values */
@@ -308,20 +315,23 @@
         width: calc(var(--input-size) - 2px);
       }
       &:before {
-        transition-delay: .15s;
+        transition-delay: 0.15s;
       }
     }
   }
 }
 
 /* general design */
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
 }
 
 article {
-  font-family: 'Gotham Rounded SSm A', 'Gotham Rounded SSm B', 'Gotham Rounded A', 'Gotham Rounded B', 'proxima-nova-soft', Verdana, Geneva, sans-serif;
+  font-family:
+    'Gotham Rounded SSm A', 'Gotham Rounded SSm B', 'Gotham Rounded A', 'Gotham Rounded B',
+    'proxima-nova-soft', Verdana, Geneva, sans-serif;
   color: var(--input-color--font);
   background: var(--input-color--bg);
   display: flex;
