@@ -13,6 +13,7 @@ toolchain builds them all plus a gallery.
 
 | Preview | Snippet | Description | ★ |
 | --- | --- | --- | --- |
+| <img src="snippets/business-card/preview.gif" width="160"> | **[Business Card](https://tamino-martinius.github.io/ui-snippets/snippets/business-card/)** | An interactive business card with a gooey, mouse-reactive border and text that flows along the morphing edge. | 0 |
 | <img src="snippets/menu-animations/preview.gif" width="160"> | **[Menu Animations](https://tamino-martinius.github.io/ui-snippets/snippets/menu-animations/)** | Menu-button toggles that morph between hamburger, cross, dots and back icons. | 176 |
 | <img src="snippets/checkboxes/preview.gif" width="160"> | **[Checkboxes](https://tamino-martinius.github.io/ui-snippets/snippets/checkboxes/)** | Animated, pure-CSS custom checkbox styles. | 13 |
 | <img src="snippets/ascii-generator/preview.gif" width="160"> | **[ASCII Art Generator](https://tamino-martinius.github.io/ui-snippets/snippets/ascii-generator/)** | Turn any image into ASCII art in the browser, with live controls. | 3 |
