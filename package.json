@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "dat.gui": "^0.7.9",
-    "konva": "^10.3.0"
+    "konva": "^7.2.5"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.0",

@@ -1,6 +1,10 @@
 import { GUI } from 'dat.gui';
 import Konva from 'konva';
 
+// Render at >= 2x device pixels so the path text stays crisp and moves
+// smoothly (sub-pixel) even on non-retina displays.
+Konva.pixelRatio = Math.max(2, window.devicePixelRatio || 1);
+
 const PI2 = Math.PI / 2;
 
 interface Point {
@@ -159,7 +163,7 @@ class BusinessCard {
 
     // Lines (the blobs) are added first so the text paths sit on top of them.
     for (const layer of this.layers) {
-      layer.line = new Konva.Line({ closed: true });
+      layer.line = new Konva.Line({ points: [], closed: true });
       this.layer.add(layer.line);
     }
     this.layer.add(this.nameText);
