@@ -51,11 +51,6 @@ function card(snippet: Snippet): HTMLElement {
       { class: 'card__body' },
       el('h2', { class: 'card__title' }, snippet.title),
       el('p', { class: 'card__desc' }, snippet.description),
-      el(
-        'span',
-        { class: 'card__stars', title: `${snippet.stars} GitHub stars` },
-        `★ ${snippet.stars}`,
-      ),
     ),
   );
 }

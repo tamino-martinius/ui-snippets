@@ -132,17 +132,6 @@ body {
   flex: 1;
 }
 
-.card__stars {
-  margin-top: 0.5rem;
-  align-self: flex-start;
-  font-size: 0.8rem;
-  color: #f5c518;
-  background: rgba(245, 197, 24, 0.1);
-  border: 1px solid rgba(245, 197, 24, 0.25);
-  padding: 0.15rem 0.55rem;
-  border-radius: 999px;
-}
-
 .foot {
   margin-top: 3rem;
   color: var(--muted);
